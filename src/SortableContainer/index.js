@@ -479,12 +479,14 @@ export default function sortableContainer(
             this.listenerNode.removeEventListener(
               eventName,
               this.handleSortMove,
+              false,
             ),
           );
           events.end.forEach((eventName) =>
             this.listenerNode.removeEventListener(
               eventName,
               this.handleSortEnd,
+              false,
             ),
           );
         }
@@ -634,9 +636,9 @@ export default function sortableContainer(
 
         // For keyboard sorting, we want user input to dictate the position of the nodes
         const mustShiftBackward =
-          isKeySorting && (index > this.index && index <= prevIndex);
+          isKeySorting && index > this.index && index <= prevIndex;
         const mustShiftForward =
-          isKeySorting && (index < this.index && index >= prevIndex);
+          isKeySorting && index < this.index && index >= prevIndex;
 
         const translate = {
           x: 0,
